@@ -24,3 +24,19 @@ void motor(int a, int b) {  //75 225
   analogWrite(rms, a);  //sets the pwm pins
   analogWrite(lms, b);  //sets the speed
 }
+
+void brake() {
+  motor(-250, -250);
+  delay(breakTime);
+  motor(0, 0);
+  delay(100);
+}
+
+void turn90(char s) {
+  (s == 'r') ? motor(-turnSpeed, turnSpeed) : motor(turnSpeed, -turnSpeed);
+  delay(turn90_delay);  //this should be adjusted
+  (s == 'l') ? motor(-turnSpeed, turnSpeed) : motor(turnSpeed, -turnSpeed);
+  delay(turnBrake);
+  motor(0,0);
+  delay(100);
+}
