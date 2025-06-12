@@ -7,15 +7,16 @@ String menu_list(byte a) {
   else if (a == 6)  return "PID with Inverse  ";
   else if (a == 7)  return "Simple PID        ";
   else if (a == 8)  return "PID adjustment    ";
-  else if (a == 9)  return "menu nine         ";
-  else if (a == 10) return "menu ten          ";
-  else if (a == 11) return "menu eleven       ";
-  else if (a == 12) return "Straight          ";
+  else if (a == 9)  return "manual            ";
+  else if (a == 10) return "Straight          ";
+  else if (a == 11) return "Turn left         ";
+  else if (a == 12) return "Turn Right        ";
+  else if (a == 13) return "Backward        ";
 }
 
 byte menu() {
   oled.set1X();
-  byte base = 1, peak = 8, temp = 0, ind = 1, limit = 12;
+  byte base = 1, peak = 8, temp = 0, ind = 1, limit = 13;
   while (1) {
     if (temp != ind) {
       temp = ind;

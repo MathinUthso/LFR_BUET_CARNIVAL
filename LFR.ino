@@ -1,5 +1,6 @@
 void simplePID() {
   PID_reading();
+
   if (sum == 0) {
     delay(50);
     if (turn != 's') {
@@ -10,8 +11,7 @@ void simplePID() {
     return; // Exit early as no further action is needed
   }
 
-  if (sum==1||sum==2) {
-    PID_reading();
+  else if (sum==1||sum==2) {
     erorr = 35 - avg; 
     PID = kp * erorr + (last_erorr - erorr) * kd;
     last_erorr = erorr;
@@ -25,7 +25,7 @@ void simplePID() {
     //=====================
   }
 
- if(sum>=3&&sum<=5){
+ else if(sum>=3&&sum<=5){
        if (s[0] && !s[5]) turn = 'l';
   if (!s[0] && s[5]) turn = 'r';
    if (s[0] && s[5] && sum < 6) {  //detection of iLine
@@ -45,7 +45,7 @@ void simplePID() {
     }
  }
 
-  if (sum == 6) {
+  else if (sum == 6) {
     delay(50);
     PID_reading();
   if (sum == 6) {

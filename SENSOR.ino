@@ -1,20 +1,26 @@
 // void reading() {
-//   sensor = 0; //this is to refresh initial value
+//   Sensor = 0; //this is to refresh initial value
 //   sum = 0;
 //   for (int i = 0 ; i < 6 ; i++) {
-//     (i < 4) ? s[i] = analogRead(i) : s[i] = analogRead(i + 2);
-//     (s[i] > threshold[i]) ? s[i] = 1 : s[i] = 0; //conditional statement. this is to convert analog value to digital. if you want to see real analog value, then comment it. but for line follow, you must uncomment it.
-//     sensor += s[i] * base[i]; //this is to merge all 6 values and imagine them in a single binary number. then i converted it into decimal number to use as final value. better search about base convertion
+//      (i < 4) ? s[i] = analogRead(i) : s[i] = analogRead(i + 2);
+//     (s[i] > tHold[i]) ? s[i] = 1 : s[i] = 0; //conditional statement. this is to convert analog value to digital. if you want to see real analog value, then comment it. but for line follow, you must uncomment it.
+//     Sensor += s[i] * base[i]; //this is to merge all 6 values and imagine them in a single binary number. then i converted it into decimal number to use as final value. better search about base convertion
 //     sum += s[i]; //finds out total count of sensor
 //   }
 // }
 void PID_reading() {
   sum = 0;
   Sensor = 0;
+  // adc_complete = false;
+  // // Ensure ADC is running
+  // ADCSRA |= (1 << ADSC);
+  // // Wait for all 6 conversions (~48 µs)
+  // //while (!adc_complete);
 
   for (int i = 0; i < 6; i++) {
 
-    s[i] = (i < 4) ? analogRead(i) : analogRead(i + 2);
+    //s[i] = adc_buffer[i];
+    (i < 4) ? s[i] = analogRead(i) : s[i] = analogRead(i + 2);
 
     // Convert to digital
     s[i] = (s[i] > tHold[i]) ? 1^inverseMode : 0^inverseMode;
@@ -24,9 +30,7 @@ void PID_reading() {
     sum += s[i];
   }
 
-  if (sum > 0) {
-    avg = Sensor / sum;
-  }
+  (sum== 0)? avg=35: avg = Sensor / sum;
 }
 
 

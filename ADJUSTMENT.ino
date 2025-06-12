@@ -1,16 +1,16 @@
 String adjustment_list(byte a) {
   if (a == 1)       return "Base Speed     ";
-  else if (a == 2)  return "Motor Error     ";
-  else if (a == 3)  return "Turn Speed      ";
-  else if (a == 4)  return "Node Delay     ";
+  else if (a == 2)  return "Motor Error    ";
+  else if (a == 3)  return "Turn Speed     ";
+  else if (a == 4)  return "junction Delay ";
   else if (a == 5)  return "Stop timer     ";
   else if (a == 6)  return "U Turn Delay   ";
   else if (a == 7)  return "Inverse Delay  ";
-  else if (a == 8)  return "Top Brake    ";
-  else if (a == 9)  return "menu nine     ";
-  else if (a == 10) return "menu ten      ";
-  else if (a == 11) return "menu eleven   ";
-  else if (a == 12) return "menu twelve   ";
+  else if (a == 8)  return "Brake time      ";
+  else if (a == 9)  return "Turn90_Delay   ";
+  else if (a == 10) return "Turn Brake     ";
+  else if (a == 11) return "node delay     ";
+  else if (a == 12) return "Turn reset     ";
 }
 
 void adjustment_panel() {
@@ -94,6 +94,9 @@ void set_adjust(int indicator) {
   byte temp = 0, limit = 255;
   if (indicator == 1) limit = 250;
   else if (indicator == 2) limit = 60;
+  else if (indicator == 12) limit = 30;
+  else if (indicator == 11) limit = 100;
+  else if (indicator == 5) limit = 100;
   while (1) {
     if (temp != value) {
       temp = value;

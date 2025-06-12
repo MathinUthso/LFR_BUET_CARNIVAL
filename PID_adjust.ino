@@ -2,7 +2,7 @@ String PID_adjust(byte a) {
   if (a == 1)       return "Kp            ";
   else if (a == 2)  return "Kd            ";
   else if (a == 3)  return "Ki            ";
-  else if (a == 4)  return "menu 4        ";
+  else if (a == 4)  return "Hand          ";
   else if (a == 5)  return "menu 5        ";
   else if (a == 6)  return "menu 6        ";
   else if (a == 7)  return "menu 7        ";
@@ -93,12 +93,15 @@ void PID_Valadjust(int indicator) {
   value = EEPROM.read(indicator + 100);
 
   byte temp = 0, limit = 255;
+  if(indicator==4)limit=2;
   while (1) {
     if (temp != value) {
       temp = value;
-     // if (indicator == 2) text("SET: " + String(value+25) + "    ", 5, 3);
-      //else
-       text("SET: " + String(value) + "    ", 5, 3);
+     if (indicator == 4){
+      text("1=R & 2=L",5,1);  
+      text("SET: " + String(value) + "    ", 5, 3);
+      } 
+      else text("SET: " + String(value) + "    ", 5, 3);
     }
 
     byte inc = push(INCREMENT_BUTTON);
