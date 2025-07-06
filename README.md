@@ -1,4 +1,4 @@
-# Line Following Robot (LFR) for BUET Carnival
+# Line Following Robot (LFR) by TeamOne
 
 This repository contains the Arduino code for a Line Following Robot (LFR) designed for the BUET Carnival. The robot is built to navigate a track using a sensor array, PID control, and maze-solving capabilities. It includes features like a user interface with an OLED display, adjustable parameters via buttons, and EEPROM storage for persistent settings.
 
